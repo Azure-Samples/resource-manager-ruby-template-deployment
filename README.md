@@ -4,6 +4,8 @@ platforms: ruby
 author: devigned
 ---
 
+[![Build Status](https://travis-ci.org/Azure-Samples/resource-manager-ruby-template-deployment.svg?branch=master)](https://travis-ci.org/Azure-Samples/resource-manager-ruby-template-deployment)
+
 # Deploy an SSH Enabled VM with a Template in Ruby
 
 This sample explains how to use Azure Resource Manager templates to deploy your Resources to Azure. It shows how to
