@@ -95,7 +95,7 @@ puts "Done deploying!!\n\nYou can connect via: `ssh azureSample@#{deployer.dns_p
 
 ### What is this lib/deployer.rb Doing?
 
-The [Deployer class](./lib/deployer.rb) consists of the following:
+The [Deployer class](https://github.com/azure-samples/resource-manager-ruby-template-deployment/blob/master/lib/deployer.rb) consists of the following:
 
 ``` ruby
 require 'haikunator'
