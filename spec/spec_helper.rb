@@ -18,7 +18,15 @@ VCR.configure do |c|
   c.filter_sensitive_data('<AZURE_CLIENT_ID>') { ENV['AZURE_CLIENT_ID'] }
   c.filter_sensitive_data('<AZURE_CLIENT_SECRET>') { ENV['AZURE_CLIENT_SECRET'] }
   c.filter_sensitive_data('<AZURE_SUBSCRIPTION_ID>') { ENV['AZURE_SUBSCRIPTION_ID'] }
-  ENV['RETRY_TIMEOUT'] = '0'
+
+  # This will be overridden with dummy values when running in travis-ci
+  if ENV['CI']
+    ENV['AZURE_TENANT_ID'] = '11111111-1111-1111-1111-111111111111'
+    ENV['AZURE_CLIENT_ID'] = '11111111-1111-1111-1111-111111111111'
+    ENV['AZURE_CLIENT_SECRET'] = 'SECRET'
+    ENV['AZURE_SUBSCRIPTION_ID'] = '11111111-1111-1111-1111-111111111111'
+    ENV['RETRY_TIMEOUT'] = '0'
+  end
 
   c.before_record do |interaction|
     interaction.request.headers.delete('authorization')
