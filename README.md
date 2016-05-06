@@ -169,8 +169,7 @@ parameters and deploying the template.
 The `destroy` method simply deletes the resource group thus deleting all of the resources within that group.
 
 Each of the above methods use the `Azure::ARM::Resources::ResourceManagementClient` class, which resides within the
-[azure_mgmt_resources](https://rubygems.org/gems/azure_mgmt_resources) gem (for rdoc documentation for the gem, see
-http://www.rubydoc.info/gems/azure_mgmt_resources/0.2.1).
+[azure_mgmt_resources](https://rubygems.org/gems/azure_mgmt_resources) gem ([see the rdocs docs here](http://www.rubydoc.info/gems/azure_mgmt_resources/0.2.1)).
 
 After the script runs, you should see something like the following in your output:
 
