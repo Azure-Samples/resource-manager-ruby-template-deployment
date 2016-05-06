@@ -8,6 +8,8 @@ group :development, :test do
   gem 'rake'
   gem 'rspec'
   gem 'dotenv'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 gem 'azure_mgmt_resources', '~>0.2.1'

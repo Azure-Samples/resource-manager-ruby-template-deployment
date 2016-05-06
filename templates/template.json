@@ -69,7 +69,6 @@
         "description": "Name of the subnet"
       }
     },
-    <% if blah %>
     "virtualNetworkName": {
       "type": "string",
       "defaultValue": "azsampleVNET",
@@ -77,7 +76,6 @@
         "description": "Name of the virtual network"
       }
     }
-    <% end %>
   },
   "variables": {
     "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'azsample')]",
