@@ -45,7 +45,8 @@ describe Deployer do
 
   describe '#deploy' do
     before(:each) do
-      @deployer = described_class.new(ENV['AZURE_SUBSCRIPTION_ID'], resource_group)
+      pub_path = File.expand_path(File.join(__dir__, '../fixtures/id_rsa.pub'))
+      @deployer = described_class.new(ENV['AZURE_SUBSCRIPTION_ID'], resource_group, pub_path)
     end
 
     after(:each) do
