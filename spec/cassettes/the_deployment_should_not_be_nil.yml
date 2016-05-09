@@ -5,7 +5,7 @@ http_interactions:
     uri: https://login.windows.net/<AZURE_TENANT_ID>/oauth2/token
     body:
       encoding: UTF-8
-      string: resource=https%3A%2F%2Fmanagement.core.windows.net%2F&client_id=<AZURE_CLIENT_ID>&client_secret=HNoSM4kKUveBJTu3FRtkugoThbameKudaMMP32bWc0I%3D&grant_type=client_credentials
+      string: resource=https%3A%2F%2Fmanagement.core.windows.net%2F&client_id=<AZURE_CLIENT_ID>&client_secret=<AZURE_CLIENT_SECRET>%3D&grant_type=client_credentials
     headers:
       User-Agent:
       - Faraday v0.9.2
