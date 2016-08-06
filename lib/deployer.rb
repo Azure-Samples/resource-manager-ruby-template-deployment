@@ -34,7 +34,7 @@ class Deployer
     params = Azure::ARM::Resources::Models::ResourceGroup.new.tap do |rg|
       rg.location = 'westus'
     end
-    @client.resource_groups.create_or_update(@resource_group, params).value!
+    @client.resource_groups.create_or_update(@resource_group, params)
 
     # build the deployment from a json file template from parameters
     template = File.read(File.expand_path(File.join(__dir__, '../templates/template.json')))
@@ -48,15 +48,27 @@ class Deployer
     deployment.properties.parameters = Hash[*deploy_params.map{ |k, v| [k,  {value: v}] }.flatten]
 
     # put the deployment to the resource group
-    @client.deployments.create_or_update(@resource_group, 'azure-sample', deployment).value!.body
+    @client.deployments.create_or_update(@resource_group, 'azure-sample', deployment)
   end
 
   # delete the resource group and all resources within the group
   def destroy
-    @client.resource_groups.delete(@resource_group).value!.body
+    @client.resource_groups.delete(@resource_group)
   end
 
   def dns_prefix
     DEPLOYMENT_PARAMETERS[:dnsLabelPrefix]
   end
+
+  def print_properties(resource)
+    puts "\tProperties:"
+    resource.instance_variables.sort.each do |ivar|
+      str = ivar.to_s.gsub /^@/, ''
+      if resource.respond_to? str.to_sym
+        puts "\t\t#{str}: #{resource.send(str.to_sym)}"
+      end
+    end
+    puts "\n\n"
+  end
+
 end

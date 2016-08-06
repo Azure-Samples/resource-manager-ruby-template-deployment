@@ -21,7 +21,11 @@ puts "Beginning the deployment... \n\n"
 # Deploy the template
 my_deployment = deployer.deploy
 
-puts "Done deploying!!\n\nYou can connect via: `ssh azureSample@#{deployer.dns_prefix}.westus.cloudapp.azure.com`"
+deployer.print_properties(my_deployment)
+
+puts "Done deploying!!\n\nYou can connect via: `ssh azureSample@#{deployer.dns_prefix}.westus.cloudapp.azure.com`.\nPress enter to delete the sample resource group."
+gets
 
 # Destroy the resource group which contains the deployment
-# deployer.destroy
+puts "Deleting #{my_resource_group}..."
+deployer.destroy
