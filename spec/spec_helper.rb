@@ -6,7 +6,6 @@ $: << File.expand_path('../lib')
 require 'vcr'
 require 'dotenv'
 require 'climate_control'
-Dotenv.load(File.expand_path(File.join(__dir__, '../.env')))
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/cassettes'
