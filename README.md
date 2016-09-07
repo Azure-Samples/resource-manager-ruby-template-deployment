@@ -41,7 +41,7 @@ network interface belonging to the subnet. The virtual machine is a `Standard_D1
 
 ### To run this sample, do the following:
 
-You will need to create an Azure service principal either through Azure CLI, PowerShell or the portal; gather the 
+You will need to create an Azure service principal either through Azure CLI, PowerShell or the portal; gather the
 correct object IDs and authenticators; copy the deployment code; and then execute
 over it, as follows:
 
@@ -69,7 +69,7 @@ bundle install
 bundle exec ruby azure_deployment.rb
 ```
 
-Note: If you don't have your subscriptionId handy, run 
+Note: If you don't have your subscriptionId handy, run
 `export AZURE_SUBSCRIPTION_ID=$(azure account show --json | jq -r '.[0].id')`
 
 ### What is this azure_deployment.rb Doing?
