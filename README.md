@@ -50,24 +50,24 @@ over it, as follows:
   * For Azure CLI, note: the $tentantID, $appId, and the password used when running `azure ad sp create`
   * For PowerShell, note: the $tenant, the $azureAdApplication.ApplicationId, and the $creds
 * Assign the appropriate rights to your principal:, e.g. for Azuze CLI:
-   ```
-   principalId=$(azure ad sp show --search exampleapp --json  | jq -r '.[0].objectId')
-   azure role assignment create --objectId $principalId -o Contributor -c /subscriptions/$AZURE_SUBSCRIPTION_ID/
-   ```
+```
+principalId=$(azure ad sp show --search exampleapp --json  | jq -r '.[0].objectId')
+azure role assignment create --objectId $principalId -o Contributor -c /subscriptions/$AZURE_SUBSCRIPTION_ID/
+```
 * Set your environment variables:
-  ```
-  export AZURE_SUBSCRIPTION_ID={your subscription id}`
-  export AZURE_TENANT_ID={your tenant id}
-  export AZURE_CLIENT_ID={your client id}
-  export AZURE_CLIENT_SECRET={your client secret}
-  ```
+```
+export AZURE_SUBSCRIPTION_ID={your subscription id}`
+export AZURE_TENANT_ID={your tenant id}
+export AZURE_CLIENT_ID={your client id}
+export AZURE_CLIENT_SECRET={your client secret}
+```
 * Clone the deployment template and execute over it:
-  ```
-  git clone https://github.com/Azure-Samples/resource-manager-ruby-template-deployment.git
-  cd resource-manager-ruby-template-deployment
-  bundle install
-  bundle exec ruby azure_deployment.rb
-  ```
+```
+git clone https://github.com/Azure-Samples/resource-manager-ruby-template-deployment.git
+cd resource-manager-ruby-template-deployment
+bundle install
+bundle exec ruby azure_deployment.rb
+```
 
 Note: If you don't have your subscriptionId handy, run 
 `export AZURE_SUBSCRIPTION_ID=$(azure account show --json | jq -r '.[0].id')`
