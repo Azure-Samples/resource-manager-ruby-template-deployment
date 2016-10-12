@@ -76,7 +76,7 @@ parameters and deploying the template.
 
 3. The `destroy` method simply deletes the resource group thus deleting all of the resources within that group.
 
-Each of thse methods use the `Azure::ARM::Resources::ResourceManagementClient` class, which resides within the
+Each of these methods use the `Azure::ARM::Resources::ResourceManagementClient` class, which resides within the
 [azure_mgmt_resources][azure_mgmt_resources] gem ([see the rdocs docs here][rdocs_mgmt_resources]).
 
 After the script runs, you should see something like the following in your output:
