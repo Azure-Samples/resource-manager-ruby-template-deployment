@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://login.windows.net/<AZURE_TENANT_ID>/oauth2/token
+    uri: https://login.microsoftonline.com/<AZURE_TENANT_ID>/oauth2/token
     body:
       encoding: UTF-8
       string: resource=https%3A%2F%2Fmanagement.core.windows.net%2F&client_id=<AZURE_CLIENT_ID>&client_secret=<AZURE_CLIENT_SECRET>&grant_type=client_credentials
@@ -31,30 +31,28 @@ http_interactions:
       x-content-type-options:
       - nosniff
       client-request-id:
-      - 67cba807-8dcd-4b11-94ea-58b9f6f74719
+      - 6d1b6170-4df1-41ee-98c9-deba39cfecde
       x-ms-request-id:
-      - 102d50ae-573d-4f9f-a728-1db9e431bcc2
-      x-ms-responsehealth:
-      - TargetId=ESTSFE_IN_412;Action=None;Category=None;Health=0;Load=24;
+      - e1a6e267-de17-4751-a5d5-dad243a7cbf4
       p3p:
       - CP="DSP CUR OTPi IND OTRi ONL FIN"
       set-cookie:
-      - esctx=AAABAAAA0TWEUN3YUUq5vuCvmnaQiVXVlorNaeQWuXvQx8VK7CdJh0dB1WqqSEAIudp14wz_QyeZDwoBXgythz--k35eqDVUbV4w5HLxH16NgI1EITqYoIDgpLKvQeML_Y0tIcu8_xLoFdvub-w17GTMJQOEHs4xLhbbmTSumhJZDLoKqWqhp3WVbGYgGi0_xTY4eIMoIAA;
-        path=/; secure; HttpOnly, x-ms-gateway-slice=productiona; path=/; secure;
-        HttpOnly, stsservicecookie=ests; path=/; secure; HttpOnly
+      - esctx=AQABAAAAAADRNYRQ3dhRSrm-4K-adpCJ8eFRQUipL-YT5cNF6MQ0lxZyvEpnXkU8yburC2qQ0woqtuTis0FyLeWN-W0edkovXtyIgJzKqJ3Ej3jec4KBHAQ2NQhFITijkto-qcEMtAqa1Tre0Yiptfckrt-FfxflrQ88We_1p9Uc40LfVV2B6pw7Mtls3AnpfixGfqbHnnEgAA;
+        domain=.login.microsoftonline.com; path=/; secure; HttpOnly, x-ms-gateway-slice=productionb;
+        path=/; secure; HttpOnly, stsservicecookie=ests; path=/; secure; HttpOnly
       x-powered-by:
       - ASP.NET
       date:
-      - Sat, 06 Aug 2016 00:08:01 GMT
+      - Tue, 27 Sep 2016 20:56:26 GMT
       connection:
       - close
       content-length:
-      - '1322'
+      - '1255'
     body:
       encoding: UTF-8
-      string: '{"token_type":"Bearer","expires_in":"3599","ext_expires_in":"0","expires_on":"1470445681","not_before":"1470441781","resource":"https://management.core.windows.net/","access_token":"<ACCESS_TOKEN>"}'
+      string: '{"token_type":"Bearer","expires_in":"3599","ext_expires_in":"0","expires_on":"1475013387","not_before":"1475009487","resource":"https://management.core.windows.net/","access_token":"<ACCESS_TOKEN>"}'
     http_version: 
-  recorded_at: Sat, 06 Aug 2016 00:08:02 GMT
+  recorded_at: Tue, 27 Sep 2016 20:56:27 GMT
 - request:
     method: put
     uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/falling-dust-38?api-version=2016-02-01
@@ -63,9 +61,9 @@ http_interactions:
       string: '{"location":"westus"}'
     headers:
       User-Agent:
-      - Azure-SDK-For-Ruby/0.3.1/
+      - Azure-SDK-For-Ruby/0.5.0/
       x-ms-client-request-id:
-      - bc11a4bd-a3dd-440c-b8d2-173d8d5060af
+      - 6668c32e-86c7-4aba-a235-8a7947dc350b
       accept-language:
       - en-US
       Content-Type:
@@ -88,22 +86,22 @@ http_interactions:
       x-ms-ratelimit-remaining-subscription-writes:
       - '1199'
       x-ms-request-id:
-      - ccd0b0e3-fb54-474d-b36d-acaec85b4153
+      - b88a66e0-2848-42dd-b314-ca6db55b49d4
       x-ms-correlation-request-id:
-      - ccd0b0e3-fb54-474d-b36d-acaec85b4153
+      - b88a66e0-2848-42dd-b314-ca6db55b49d4
       x-ms-routing-request-id:
-      - WESTUS2:20160806T000803Z:ccd0b0e3-fb54-474d-b36d-acaec85b4153
+      - WESTUS2:20160927T205628Z:b88a66e0-2848-42dd-b314-ca6db55b49d4
       strict-transport-security:
       - max-age=31536000; includeSubDomains
       date:
-      - Sat, 06 Aug 2016 00:08:03 GMT
+      - Tue, 27 Sep 2016 20:56:28 GMT
       connection:
       - close
     body:
       encoding: UTF-8
       string: '{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38","name":"falling-dust-38","location":"westus","properties":{"provisioningState":"Succeeded"}}'
     http_version: 
-  recorded_at: Sat, 06 Aug 2016 00:08:03 GMT
+  recorded_at: Tue, 27 Sep 2016 20:56:28 GMT
 - request:
     method: put
     uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/falling-dust-38/providers/Microsoft.Resources/deployments/azure-sample?api-version=2016-02-01
@@ -112,11 +110,11 @@ http_interactions:
       string: '{"properties":{"template":{"$schema":"http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json","contentVersion":"1.0.0.0","parameters":{"adminUserName":{"type":"string","defaultValue":"azureSample","metadata":{"description":"User
         name for the Virtual Machine."}},"sshKeyData":{"type":"string","metadata":{"description":"SSH
         rsa public key file as a string."}},"dnsLabelPrefix":{"type":"string","metadata":{"description":"Unique
-        DNS Name for the Public IP used to access the Virtual Machine."}},"vmSize":{"type":"string","defaultValue":"Standard_D1","metadata":{"description":"Size
+        DNS Name for the Public IP used to access the Virtual Machine."}},"vmSize":{"type":"string","defaultValue":"Standard_D2","metadata":{"description":"Size
         of the VM"}},"vmName":{"type":"string","metadata":{"description":"Name of
         the VM"}},"imagePublisher":{"type":"string","defaultValue":"canonical","metadata":{"description":"Name
         of the image publisher"}},"imageOffer":{"type":"string","defaultValue":"ubuntuserver","metadata":{"description":"Name
-        of the image offer"}},"imageSku":{"type":"string","defaultValue":"16.04.0-DAILY-LTS","metadata":{"description":"Name
+        of the image offer"}},"imageSku":{"type":"string","defaultValue":"16.04.0-LTS","metadata":{"description":"Name
         of the image sku"}},"imageVersion":{"type":"string","defaultValue":"latest","metadata":{"description":"Name
         of the image sku"}},"subnetName":{"type":"string","defaultValue":"azsample-subnet","metadata":{"description":"Name
         of the subnet"}},"virtualNetworkName":{"type":"string","defaultValue":"azsampleVNET","metadata":{"description":"Name
@@ -135,14 +133,14 @@ http_interactions:
         variables(''storageAccountName''))]","[concat(''Microsoft.Network/networkInterfaces/'',
         variables(''nicName''))]"],"properties":{"hardwareProfile":{"vmSize":"[parameters(''vmSize'')]"},"osProfile":{"computerName":"[parameters(''vmName'')]","adminUsername":"[parameters(''adminUsername'')]","linuxConfiguration":{"disablePasswordAuthentication":"true","ssh":{"publicKeys":[{"path":"[variables(''sshKeyPath'')]","keyData":"[parameters(''sshKeyData'')]"}]}}},"storageProfile":{"imageReference":{"publisher":"[parameters(''imagePublisher'')]","offer":"[parameters(''imageOffer'')]","sku":"[parameters(''imageSku'')]","version":"latest"},"osDisk":{"name":"osdisk","vhd":{"uri":"[concat(''http://'',variables(''storageAccountName''),''.blob.core.windows.net/'',variables(''vmStorageAccountContainerName''),''/'',
         variables(''osDiskName''),''.vhd'')]"},"caching":"ReadWrite","createOption":"FromImage"}},"networkProfile":{"networkInterfaces":[{"id":"[resourceId(''Microsoft.Network/networkInterfaces'',
-        variables(''nicName''))]"}]},"diagnosticsProfile":{"bootDiagnostics":{"enabled":"true","storageUri":"[concat(''http://'',variables(''storageAccountName''),''.blob.core.windows.net'')]"}}}}]},"parameters":{"dnsLabelPrefix":{"value":"throbbing-shape-31"},"vmName":{"value":"azure-deployment-sample-vm"},"sshKeyData":{"value":"ssh-rsa
+        variables(''nicName''))]"}]},"diagnosticsProfile":{"bootDiagnostics":{"enabled":"true","storageUri":"[concat(''http://'',variables(''storageAccountName''),''.blob.core.windows.net'')]"}}}}]},"parameters":{"dnsLabelPrefix":{"value":"damp-dew-4"},"vmName":{"value":"azure-deployment-sample-vm"},"sshKeyData":{"value":"ssh-rsa
         AAAAB3NzaC1yc2EAAAADAQABAAABAQDSViFh3+poQVA4uZLsAD+CrNivmtgwXgrljZphFMpjxK+o9oIQBdH0ES7iqxCYr4hDQzDljqEGm3/Xqczjmu6Wr1dfJC0/AZEq42HX3nVsU/NgdEantm/EilG0ufO0oFjo7nzyj4RrcxO6l4MFzMZiicVA5PtLYLiUVWmjurfwnxOFQlwamDPzsvh/bbB4PK0jYU6aTkdIH8fzUR/ZbohhJABMoSEGcFbXdvAR0M3b74K0L0Xf8cExlr815aZrbe72EJ1fa6bPslb28UXgKOVl2R5QJo9zVX4JjC28UymU1edfeyqPRtIbsDBg88RuFaa0FgIQePLyboKW0YEdjiov
         david@devigned.com\n"}},"mode":"Incremental"}}'
     headers:
       User-Agent:
-      - Azure-SDK-For-Ruby/0.3.1/
+      - Azure-SDK-For-Ruby/0.5.0/
       x-ms-client-request-id:
-      - 930202d2-62e8-46df-a996-8b6b25c0c8c0
+      - 3c9ced2f-3846-42ad-b7b8-4ebd2415c695
       accept-language:
       - en-US
       Content-Type:
@@ -161,45 +159,45 @@ http_interactions:
       expires:
       - "-1"
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/falling-dust-38/providers/Microsoft.Resources/deployments/azure-sample/operationStatuses/08587311648012550953?api-version=2016-02-01
+      - https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/falling-dust-38/providers/Microsoft.Resources/deployments/azure-sample/operationStatuses/08587265970966310302?api-version=2016-02-01
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1198'
+      - '1199'
       x-ms-request-id:
-      - e60d8458-fea5-4436-a429-dcf45c16aa05
+      - 0bbc1df1-0220-4251-9dbe-ff68a95b5083
       x-ms-correlation-request-id:
-      - e60d8458-fea5-4436-a429-dcf45c16aa05
+      - 0bbc1df1-0220-4251-9dbe-ff68a95b5083
       x-ms-routing-request-id:
-      - WESTUS2:20160806T000804Z:e60d8458-fea5-4436-a429-dcf45c16aa05
+      - WESTUS2:20160927T205629Z:0bbc1df1-0220-4251-9dbe-ff68a95b5083
       strict-transport-security:
       - max-age=31536000; includeSubDomains
       date:
-      - Sat, 06 Aug 2016 00:08:04 GMT
+      - Tue, 27 Sep 2016 20:56:29 GMT
       connection:
       - close
       content-length:
-      - '4100'
+      - '4086'
     body:
       encoding: UTF-8
       string: '{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Resources/deployments/azure-sample","name":"azure-sample","properties":{"parameters":{"adminUserName":{"type":"String","value":"azureSample"},"sshKeyData":{"type":"String","value":"ssh-rsa
         AAAAB3NzaC1yc2EAAAADAQABAAABAQDSViFh3+poQVA4uZLsAD+CrNivmtgwXgrljZphFMpjxK+o9oIQBdH0ES7iqxCYr4hDQzDljqEGm3/Xqczjmu6Wr1dfJC0/AZEq42HX3nVsU/NgdEantm/EilG0ufO0oFjo7nzyj4RrcxO6l4MFzMZiicVA5PtLYLiUVWmjurfwnxOFQlwamDPzsvh/bbB4PK0jYU6aTkdIH8fzUR/ZbohhJABMoSEGcFbXdvAR0M3b74K0L0Xf8cExlr815aZrbe72EJ1fa6bPslb28UXgKOVl2R5QJo9zVX4JjC28UymU1edfeyqPRtIbsDBg88RuFaa0FgIQePLyboKW0YEdjiov
-        david@devigned.com\n"},"dnsLabelPrefix":{"type":"String","value":"throbbing-shape-31"},"vmSize":{"type":"String","value":"Standard_D1"},"vmName":{"type":"String","value":"azure-deployment-sample-vm"},"imagePublisher":{"type":"String","value":"canonical"},"imageOffer":{"type":"String","value":"ubuntuserver"},"imageSku":{"type":"String","value":"16.04.0-DAILY-LTS"},"imageVersion":{"type":"String","value":"latest"},"subnetName":{"type":"String","value":"azsample-subnet"},"virtualNetworkName":{"type":"String","value":"azsampleVNET"}},"mode":"Incremental","provisioningState":"Accepted","timestamp":"2016-08-06T00:08:04.7691329Z","duration":"PT0.5465822S","correlationId":"e60d8458-fea5-4436-a429-dcf45c16aa05","providers":[{"namespace":"Microsoft.Storage","resourceTypes":[{"resourceType":"storageAccounts","locations":["westus"]}]},{"namespace":"Microsoft.Network","resourceTypes":[{"resourceType":"networkSecurityGroups","locations":["westus"]},{"resourceType":"publicIPAddresses","locations":["westus"]},{"resourceType":"virtualNetworks","locations":["westus"]},{"resourceType":"networkInterfaces","locations":["westus"]}]},{"namespace":"Microsoft.Compute","resourceTypes":[{"resourceType":"virtualMachines","locations":["westus"]}]}],"dependencies":[{"dependsOn":[{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/networkSecurityGroups/azure-deployment-sample-vm-azsampleNSG","resourceType":"Microsoft.Network/networkSecurityGroups","resourceName":"azure-deployment-sample-vm-azsampleNSG"}],"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/virtualNetworks/azsampleVNET","resourceType":"Microsoft.Network/virtualNetworks","resourceName":"azsampleVNET"},{"dependsOn":[{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/publicIPAddresses/azure-deployment-sample-vm-azsamplePublicIP","resourceType":"Microsoft.Network/publicIPAddresses","resourceName":"azure-deployment-sample-vm-azsamplePublicIP"},{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/virtualNetworks/azsampleVNET","resourceType":"Microsoft.Network/virtualNetworks","resourceName":"azsampleVNET"}],"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/networkInterfaces/azure-deployment-sample-vm-azsampleNIC","resourceType":"Microsoft.Network/networkInterfaces","resourceName":"azure-deployment-sample-vm-azsampleNIC"},{"dependsOn":[{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Storage/storageAccounts/rhyygbvgymakyazsample","resourceType":"Microsoft.Storage/storageAccounts","resourceName":"rhyygbvgymakyazsample"},{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/networkInterfaces/azure-deployment-sample-vm-azsampleNIC","resourceType":"Microsoft.Network/networkInterfaces","resourceName":"azure-deployment-sample-vm-azsampleNIC"}],"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Compute/virtualMachines/azure-deployment-sample-vm","resourceType":"Microsoft.Compute/virtualMachines","resourceName":"azure-deployment-sample-vm"}]}}'
+        david@devigned.com\n"},"dnsLabelPrefix":{"type":"String","value":"damp-dew-4"},"vmSize":{"type":"String","value":"Standard_D2"},"vmName":{"type":"String","value":"azure-deployment-sample-vm"},"imagePublisher":{"type":"String","value":"canonical"},"imageOffer":{"type":"String","value":"ubuntuserver"},"imageSku":{"type":"String","value":"16.04.0-LTS"},"imageVersion":{"type":"String","value":"latest"},"subnetName":{"type":"String","value":"azsample-subnet"},"virtualNetworkName":{"type":"String","value":"azsampleVNET"}},"mode":"Incremental","provisioningState":"Accepted","timestamp":"2016-09-27T20:56:29.3465585Z","duration":"PT0.4999395S","correlationId":"0bbc1df1-0220-4251-9dbe-ff68a95b5083","providers":[{"namespace":"Microsoft.Storage","resourceTypes":[{"resourceType":"storageAccounts","locations":["westus"]}]},{"namespace":"Microsoft.Network","resourceTypes":[{"resourceType":"networkSecurityGroups","locations":["westus"]},{"resourceType":"publicIPAddresses","locations":["westus"]},{"resourceType":"virtualNetworks","locations":["westus"]},{"resourceType":"networkInterfaces","locations":["westus"]}]},{"namespace":"Microsoft.Compute","resourceTypes":[{"resourceType":"virtualMachines","locations":["westus"]}]}],"dependencies":[{"dependsOn":[{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/networkSecurityGroups/azure-deployment-sample-vm-azsampleNSG","resourceType":"Microsoft.Network/networkSecurityGroups","resourceName":"azure-deployment-sample-vm-azsampleNSG"}],"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/virtualNetworks/azsampleVNET","resourceType":"Microsoft.Network/virtualNetworks","resourceName":"azsampleVNET"},{"dependsOn":[{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/publicIPAddresses/azure-deployment-sample-vm-azsamplePublicIP","resourceType":"Microsoft.Network/publicIPAddresses","resourceName":"azure-deployment-sample-vm-azsamplePublicIP"},{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/virtualNetworks/azsampleVNET","resourceType":"Microsoft.Network/virtualNetworks","resourceName":"azsampleVNET"}],"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/networkInterfaces/azure-deployment-sample-vm-azsampleNIC","resourceType":"Microsoft.Network/networkInterfaces","resourceName":"azure-deployment-sample-vm-azsampleNIC"},{"dependsOn":[{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Storage/storageAccounts/i2tx3wz6fqgdkazsample","resourceType":"Microsoft.Storage/storageAccounts","resourceName":"i2tx3wz6fqgdkazsample"},{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/networkInterfaces/azure-deployment-sample-vm-azsampleNIC","resourceType":"Microsoft.Network/networkInterfaces","resourceName":"azure-deployment-sample-vm-azsampleNIC"}],"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Compute/virtualMachines/azure-deployment-sample-vm","resourceType":"Microsoft.Compute/virtualMachines","resourceName":"azure-deployment-sample-vm"}]}}'
     http_version: 
-  recorded_at: Sat, 06 Aug 2016 00:08:04 GMT
+  recorded_at: Tue, 27 Sep 2016 20:56:29 GMT
 - request:
     method: get
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/falling-dust-38/providers/Microsoft.Resources/deployments/azure-sample/operationStatuses/08587311648012550953?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/falling-dust-38/providers/Microsoft.Resources/deployments/azure-sample/operationStatuses/08587265970966310302?api-version=2016-02-01
     body:
       encoding: US-ASCII
       string: ''
     headers:
       x-ms-client-request-id:
-      - 930202d2-62e8-46df-a996-8b6b25c0c8c0
+      - 3c9ced2f-3846-42ad-b7b8-4ebd2415c695
       accept-language:
       - en-US
       Content-Type:
       - application/json; charset=utf-8
       User-Agent:
-      - Azure-SDK-For-Ruby/0.3.1/
+      - Azure-SDK-For-Ruby/0.5.0/
   response:
     status:
       code: 200
@@ -218,15 +216,15 @@ http_interactions:
       x-ms-ratelimit-remaining-subscription-reads:
       - '14994'
       x-ms-request-id:
-      - b49c09c6-1238-4b42-a839-e0114f2489c6
+      - 57f4c9a8-8b11-4ba1-8bde-8e93104d4f1f
       x-ms-correlation-request-id:
-      - b49c09c6-1238-4b42-a839-e0114f2489c6
+      - 57f4c9a8-8b11-4ba1-8bde-8e93104d4f1f
       x-ms-routing-request-id:
-      - WESTUS2:20160806T000835Z:b49c09c6-1238-4b42-a839-e0114f2489c6
+      - WESTUS2:20160927T205659Z:57f4c9a8-8b11-4ba1-8bde-8e93104d4f1f
       strict-transport-security:
       - max-age=31536000; includeSubDomains
       date:
-      - Sat, 06 Aug 2016 00:08:34 GMT
+      - Tue, 27 Sep 2016 20:56:58 GMT
       connection:
       - close
       content-length:
@@ -235,22 +233,124 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"status":"Running"}'
     http_version: 
-  recorded_at: Sat, 06 Aug 2016 00:08:34 GMT
+  recorded_at: Tue, 27 Sep 2016 20:56:59 GMT
 - request:
     method: get
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/falling-dust-38/providers/Microsoft.Resources/deployments/azure-sample/operationStatuses/08587311648012550953?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/falling-dust-38/providers/Microsoft.Resources/deployments/azure-sample/operationStatuses/08587265970966310302?api-version=2016-02-01
     body:
       encoding: US-ASCII
       string: ''
     headers:
       x-ms-client-request-id:
-      - 930202d2-62e8-46df-a996-8b6b25c0c8c0
+      - 3c9ced2f-3846-42ad-b7b8-4ebd2415c695
       accept-language:
       - en-US
       Content-Type:
       - application/json; charset=utf-8
       User-Agent:
-      - Azure-SDK-For-Ruby/0.3.1/
+      - Azure-SDK-For-Ruby/0.5.0/
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      pragma:
+      - no-cache
+      content-type:
+      - application/json; charset=utf-8
+      expires:
+      - "-1"
+      vary:
+      - Accept-Encoding
+      x-ms-ratelimit-remaining-subscription-reads:
+      - '14998'
+      x-ms-request-id:
+      - d84307ea-fc81-4df2-9540-518340b970c6
+      x-ms-correlation-request-id:
+      - d84307ea-fc81-4df2-9540-518340b970c6
+      x-ms-routing-request-id:
+      - WESTUS2:20160927T205730Z:d84307ea-fc81-4df2-9540-518340b970c6
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Tue, 27 Sep 2016 20:57:30 GMT
+      connection:
+      - close
+      content-length:
+      - '140'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"Running"}'
+    http_version: 
+  recorded_at: Tue, 27 Sep 2016 20:57:30 GMT
+- request:
+    method: get
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/falling-dust-38/providers/Microsoft.Resources/deployments/azure-sample/operationStatuses/08587265970966310302?api-version=2016-02-01
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      x-ms-client-request-id:
+      - 3c9ced2f-3846-42ad-b7b8-4ebd2415c695
+      accept-language:
+      - en-US
+      Content-Type:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.5.0/
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache
+      pragma:
+      - no-cache
+      content-type:
+      - application/json; charset=utf-8
+      expires:
+      - "-1"
+      vary:
+      - Accept-Encoding
+      x-ms-ratelimit-remaining-subscription-reads:
+      - '14994'
+      x-ms-request-id:
+      - 7a5b82e6-beb8-4ecc-ade5-fa0318496f69
+      x-ms-correlation-request-id:
+      - 7a5b82e6-beb8-4ecc-ade5-fa0318496f69
+      x-ms-routing-request-id:
+      - WESTUS2:20160927T205800Z:7a5b82e6-beb8-4ecc-ade5-fa0318496f69
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      date:
+      - Tue, 27 Sep 2016 20:57:59 GMT
+      connection:
+      - close
+      content-length:
+      - '140'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"Running"}'
+    http_version: 
+  recorded_at: Tue, 27 Sep 2016 20:58:00 GMT
+- request:
+    method: get
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/falling-dust-38/providers/Microsoft.Resources/deployments/azure-sample/operationStatuses/08587265970966310302?api-version=2016-02-01
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      x-ms-client-request-id:
+      - 3c9ced2f-3846-42ad-b7b8-4ebd2415c695
+      accept-language:
+      - en-US
+      Content-Type:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Azure-SDK-For-Ruby/0.5.0/
   response:
     status:
       code: 200
@@ -269,15 +369,15 @@ http_interactions:
       x-ms-ratelimit-remaining-subscription-reads:
       - '14996'
       x-ms-request-id:
-      - b1a5a667-b1f0-427a-a1cf-16361970bc57
+      - 019a3968-35ce-4b8a-a0d8-b1ae4a238e7e
       x-ms-correlation-request-id:
-      - b1a5a667-b1f0-427a-a1cf-16361970bc57
+      - 019a3968-35ce-4b8a-a0d8-b1ae4a238e7e
       x-ms-routing-request-id:
-      - WESTUS2:20160806T000905Z:b1a5a667-b1f0-427a-a1cf-16361970bc57
+      - WESTUS2:20160927T205830Z:019a3968-35ce-4b8a-a0d8-b1ae4a238e7e
       strict-transport-security:
       - max-age=31536000; includeSubDomains
       date:
-      - Sat, 06 Aug 2016 00:09:04 GMT
+      - Tue, 27 Sep 2016 20:58:30 GMT
       connection:
       - close
       content-length:
@@ -286,22 +386,22 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"status":"Running"}'
     http_version: 
-  recorded_at: Sat, 06 Aug 2016 00:09:04 GMT
+  recorded_at: Tue, 27 Sep 2016 20:58:30 GMT
 - request:
     method: get
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/falling-dust-38/providers/Microsoft.Resources/deployments/azure-sample/operationStatuses/08587311648012550953?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/falling-dust-38/providers/Microsoft.Resources/deployments/azure-sample/operationStatuses/08587265970966310302?api-version=2016-02-01
     body:
       encoding: US-ASCII
       string: ''
     headers:
       x-ms-client-request-id:
-      - 930202d2-62e8-46df-a996-8b6b25c0c8c0
+      - 3c9ced2f-3846-42ad-b7b8-4ebd2415c695
       accept-language:
       - en-US
       Content-Type:
       - application/json; charset=utf-8
       User-Agent:
-      - Azure-SDK-For-Ruby/0.3.1/
+      - Azure-SDK-For-Ruby/0.5.0/
   response:
     status:
       code: 200
@@ -318,17 +418,17 @@ http_interactions:
       vary:
       - Accept-Encoding
       x-ms-ratelimit-remaining-subscription-reads:
-      - '14990'
+      - '14986'
       x-ms-request-id:
-      - f5eb0813-1cc3-49cf-8c41-2cea2e8c01b2
+      - 0139010a-43a4-4f59-ad64-25e960418c2b
       x-ms-correlation-request-id:
-      - f5eb0813-1cc3-49cf-8c41-2cea2e8c01b2
+      - 0139010a-43a4-4f59-ad64-25e960418c2b
       x-ms-routing-request-id:
-      - WESTUS2:20160806T000935Z:f5eb0813-1cc3-49cf-8c41-2cea2e8c01b2
+      - WESTUS2:20160927T205900Z:0139010a-43a4-4f59-ad64-25e960418c2b
       strict-transport-security:
       - max-age=31536000; includeSubDomains
       date:
-      - Sat, 06 Aug 2016 00:09:34 GMT
+      - Tue, 27 Sep 2016 20:59:00 GMT
       connection:
       - close
       content-length:
@@ -337,22 +437,22 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"status":"Running"}'
     http_version: 
-  recorded_at: Sat, 06 Aug 2016 00:09:34 GMT
+  recorded_at: Tue, 27 Sep 2016 20:59:01 GMT
 - request:
     method: get
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/falling-dust-38/providers/Microsoft.Resources/deployments/azure-sample/operationStatuses/08587311648012550953?api-version=2016-02-01
+    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/falling-dust-38/providers/Microsoft.Resources/deployments/azure-sample/operationStatuses/08587265970966310302?api-version=2016-02-01
     body:
       encoding: US-ASCII
       string: ''
     headers:
       x-ms-client-request-id:
-      - 930202d2-62e8-46df-a996-8b6b25c0c8c0
+      - 3c9ced2f-3846-42ad-b7b8-4ebd2415c695
       accept-language:
       - en-US
       Content-Type:
       - application/json; charset=utf-8
       User-Agent:
-      - Azure-SDK-For-Ruby/0.3.1/
+      - Azure-SDK-For-Ruby/0.5.0/
   response:
     status:
       code: 200
@@ -369,68 +469,17 @@ http_interactions:
       vary:
       - Accept-Encoding
       x-ms-ratelimit-remaining-subscription-reads:
-      - '14996'
+      - '14994'
       x-ms-request-id:
-      - 9adf2d0f-124f-4f2f-b286-f39b5e6ffefc
+      - 36ee60d8-6819-4ce8-a5ca-8391202126ac
       x-ms-correlation-request-id:
-      - 9adf2d0f-124f-4f2f-b286-f39b5e6ffefc
+      - 36ee60d8-6819-4ce8-a5ca-8391202126ac
       x-ms-routing-request-id:
-      - WESTUS2:20160806T001005Z:9adf2d0f-124f-4f2f-b286-f39b5e6ffefc
+      - WESTUS2:20160927T205931Z:36ee60d8-6819-4ce8-a5ca-8391202126ac
       strict-transport-security:
       - max-age=31536000; includeSubDomains
       date:
-      - Sat, 06 Aug 2016 00:10:05 GMT
-      connection:
-      - close
-      content-length:
-      - '140'
-    body:
-      encoding: ASCII-8BIT
-      string: '{"status":"Running"}'
-    http_version: 
-  recorded_at: Sat, 06 Aug 2016 00:10:05 GMT
-- request:
-    method: get
-    uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/falling-dust-38/providers/Microsoft.Resources/deployments/azure-sample/operationStatuses/08587311648012550953?api-version=2016-02-01
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      x-ms-client-request-id:
-      - 930202d2-62e8-46df-a996-8b6b25c0c8c0
-      accept-language:
-      - en-US
-      Content-Type:
-      - application/json; charset=utf-8
-      User-Agent:
-      - Azure-SDK-For-Ruby/0.3.1/
-  response:
-    status:
-      code: 200
-      message: 
-    headers:
-      cache-control:
-      - no-cache
-      pragma:
-      - no-cache
-      content-type:
-      - application/json; charset=utf-8
-      expires:
-      - "-1"
-      vary:
-      - Accept-Encoding
-      x-ms-ratelimit-remaining-subscription-reads:
-      - '14991'
-      x-ms-request-id:
-      - 41379469-08ab-43a0-95aa-bff946fbed20
-      x-ms-correlation-request-id:
-      - 41379469-08ab-43a0-95aa-bff946fbed20
-      x-ms-routing-request-id:
-      - WESTUS2:20160806T001035Z:41379469-08ab-43a0-95aa-bff946fbed20
-      strict-transport-security:
-      - max-age=31536000; includeSubDomains
-      date:
-      - Sat, 06 Aug 2016 00:10:35 GMT
+      - Tue, 27 Sep 2016 20:59:30 GMT
       connection:
       - close
       content-length:
@@ -439,7 +488,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"status":"Succeeded"}'
     http_version: 
-  recorded_at: Sat, 06 Aug 2016 00:10:35 GMT
+  recorded_at: Tue, 27 Sep 2016 20:59:31 GMT
 - request:
     method: get
     uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/falling-dust-38/providers/Microsoft.Resources/deployments/azure-sample?api-version=2016-02-01
@@ -448,9 +497,9 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Azure-SDK-For-Ruby/0.3.1/
+      - Azure-SDK-For-Ruby/0.5.0/
       x-ms-client-request-id:
-      - 930202d2-62e8-46df-a996-8b6b25c0c8c0
+      - 3c9ced2f-3846-42ad-b7b8-4ebd2415c695
       accept-language:
       - en-US
       Content-Type:
@@ -471,28 +520,28 @@ http_interactions:
       vary:
       - Accept-Encoding
       x-ms-ratelimit-remaining-subscription-reads:
-      - '14990'
+      - '14989'
       x-ms-request-id:
-      - 4c59d238-ae8f-4716-b0a3-cb699d2a4926
+      - 89c15a74-ebf3-4e79-aa03-961b5dd87cac
       x-ms-correlation-request-id:
-      - 4c59d238-ae8f-4716-b0a3-cb699d2a4926
+      - 89c15a74-ebf3-4e79-aa03-961b5dd87cac
       x-ms-routing-request-id:
-      - WESTUS2:20160806T001036Z:4c59d238-ae8f-4716-b0a3-cb699d2a4926
+      - WESTUS2:20160927T205931Z:89c15a74-ebf3-4e79-aa03-961b5dd87cac
       strict-transport-security:
       - max-age=31536000; includeSubDomains
       date:
-      - Sat, 06 Aug 2016 00:10:35 GMT
+      - Tue, 27 Sep 2016 20:59:30 GMT
       connection:
       - close
       content-length:
-      - '1543'
+      - '1535'
     body:
       encoding: ASCII-8BIT
       string: '{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Resources/deployments/azure-sample","name":"azure-sample","properties":{"parameters":{"adminUserName":{"type":"String","value":"azureSample"},"sshKeyData":{"type":"String","value":"ssh-rsa
         AAAAB3NzaC1yc2EAAAADAQABAAABAQDSViFh3+poQVA4uZLsAD+CrNivmtgwXgrljZphFMpjxK+o9oIQBdH0ES7iqxCYr4hDQzDljqEGm3/Xqczjmu6Wr1dfJC0/AZEq42HX3nVsU/NgdEantm/EilG0ufO0oFjo7nzyj4RrcxO6l4MFzMZiicVA5PtLYLiUVWmjurfwnxOFQlwamDPzsvh/bbB4PK0jYU6aTkdIH8fzUR/ZbohhJABMoSEGcFbXdvAR0M3b74K0L0Xf8cExlr815aZrbe72EJ1fa6bPslb28UXgKOVl2R5QJo9zVX4JjC28UymU1edfeyqPRtIbsDBg88RuFaa0FgIQePLyboKW0YEdjiov
-        david@devigned.com\n"},"dnsLabelPrefix":{"type":"String","value":"throbbing-shape-31"},"vmSize":{"type":"String","value":"Standard_D1"},"vmName":{"type":"String","value":"azure-deployment-sample-vm"},"imagePublisher":{"type":"String","value":"canonical"},"imageOffer":{"type":"String","value":"ubuntuserver"},"imageSku":{"type":"String","value":"16.04.0-DAILY-LTS"},"imageVersion":{"type":"String","value":"latest"},"subnetName":{"type":"String","value":"azsample-subnet"},"virtualNetworkName":{"type":"String","value":"azsampleVNET"}},"mode":"Incremental","provisioningState":"Succeeded","timestamp":"2016-08-06T00:10:30.9237957Z","duration":"PT2M26.701245S","correlationId":"e60d8458-fea5-4436-a429-dcf45c16aa05","providers":[{"namespace":"Microsoft.Storage","resourceTypes":[{"resourceType":"storageAccounts","locations":["westus"]}]},{"namespace":"Microsoft.Network","resourceTypes":[{"resourceType":"networkSecurityGroups","locations":["westus"]},{"resourceType":"publicIPAddresses","locations":["westus"]},{"resourceType":"virtualNetworks","locations":["westus"]},{"resourceType":"networkInterfaces","locations":["westus"]}]},{"namespace":"Microsoft.Compute","resourceTypes":[{"resourceType":"virtualMachines","locations":["westus"]}]}],"dependencies":[{"dependsOn":[{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/networkSecurityGroups/azure-deployment-sample-vm-azsampleNSG","resourceType":"Microsoft.Network/networkSecurityGroups","resourceName":"azure-deployment-sample-vm-azsampleNSG"}],"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/virtualNetworks/azsampleVNET","resourceType":"Microsoft.Network/virtualNetworks","resourceName":"azsampleVNET"},{"dependsOn":[{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/publicIPAddresses/azure-deployment-sample-vm-azsamplePublicIP","resourceType":"Microsoft.Network/publicIPAddresses","resourceName":"azure-deployment-sample-vm-azsamplePublicIP"},{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/virtualNetworks/azsampleVNET","resourceType":"Microsoft.Network/virtualNetworks","resourceName":"azsampleVNET"}],"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/networkInterfaces/azure-deployment-sample-vm-azsampleNIC","resourceType":"Microsoft.Network/networkInterfaces","resourceName":"azure-deployment-sample-vm-azsampleNIC"},{"dependsOn":[{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Storage/storageAccounts/rhyygbvgymakyazsample","resourceType":"Microsoft.Storage/storageAccounts","resourceName":"rhyygbvgymakyazsample"},{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/networkInterfaces/azure-deployment-sample-vm-azsampleNIC","resourceType":"Microsoft.Network/networkInterfaces","resourceName":"azure-deployment-sample-vm-azsampleNIC"}],"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Compute/virtualMachines/azure-deployment-sample-vm","resourceType":"Microsoft.Compute/virtualMachines","resourceName":"azure-deployment-sample-vm"}],"outputResources":[{"id":"Microsoft.Compute/virtualMachines/azure-deployment-sample-vm"},{"id":"Microsoft.Network/networkInterfaces/azure-deployment-sample-vm-azsampleNIC"},{"id":"Microsoft.Network/networkSecurityGroups/azure-deployment-sample-vm-azsampleNSG"},{"id":"Microsoft.Network/publicIPAddresses/azure-deployment-sample-vm-azsamplePublicIP"},{"id":"Microsoft.Network/virtualNetworks/azsampleVNET"},{"id":"Microsoft.Storage/storageAccounts/rhyygbvgymakyazsample"}]}}'
+        david@devigned.com\n"},"dnsLabelPrefix":{"type":"String","value":"damp-dew-4"},"vmSize":{"type":"String","value":"Standard_D2"},"vmName":{"type":"String","value":"azure-deployment-sample-vm"},"imagePublisher":{"type":"String","value":"canonical"},"imageOffer":{"type":"String","value":"ubuntuserver"},"imageSku":{"type":"String","value":"16.04.0-LTS"},"imageVersion":{"type":"String","value":"latest"},"subnetName":{"type":"String","value":"azsample-subnet"},"virtualNetworkName":{"type":"String","value":"azsampleVNET"}},"mode":"Incremental","provisioningState":"Succeeded","timestamp":"2016-09-27T20:59:13.4018642Z","duration":"PT2M44.5552452S","correlationId":"0bbc1df1-0220-4251-9dbe-ff68a95b5083","providers":[{"namespace":"Microsoft.Storage","resourceTypes":[{"resourceType":"storageAccounts","locations":["westus"]}]},{"namespace":"Microsoft.Network","resourceTypes":[{"resourceType":"networkSecurityGroups","locations":["westus"]},{"resourceType":"publicIPAddresses","locations":["westus"]},{"resourceType":"virtualNetworks","locations":["westus"]},{"resourceType":"networkInterfaces","locations":["westus"]}]},{"namespace":"Microsoft.Compute","resourceTypes":[{"resourceType":"virtualMachines","locations":["westus"]}]}],"dependencies":[{"dependsOn":[{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/networkSecurityGroups/azure-deployment-sample-vm-azsampleNSG","resourceType":"Microsoft.Network/networkSecurityGroups","resourceName":"azure-deployment-sample-vm-azsampleNSG"}],"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/virtualNetworks/azsampleVNET","resourceType":"Microsoft.Network/virtualNetworks","resourceName":"azsampleVNET"},{"dependsOn":[{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/publicIPAddresses/azure-deployment-sample-vm-azsamplePublicIP","resourceType":"Microsoft.Network/publicIPAddresses","resourceName":"azure-deployment-sample-vm-azsamplePublicIP"},{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/virtualNetworks/azsampleVNET","resourceType":"Microsoft.Network/virtualNetworks","resourceName":"azsampleVNET"}],"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/networkInterfaces/azure-deployment-sample-vm-azsampleNIC","resourceType":"Microsoft.Network/networkInterfaces","resourceName":"azure-deployment-sample-vm-azsampleNIC"},{"dependsOn":[{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Storage/storageAccounts/i2tx3wz6fqgdkazsample","resourceType":"Microsoft.Storage/storageAccounts","resourceName":"i2tx3wz6fqgdkazsample"},{"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Network/networkInterfaces/azure-deployment-sample-vm-azsampleNIC","resourceType":"Microsoft.Network/networkInterfaces","resourceName":"azure-deployment-sample-vm-azsampleNIC"}],"id":"/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/falling-dust-38/providers/Microsoft.Compute/virtualMachines/azure-deployment-sample-vm","resourceType":"Microsoft.Compute/virtualMachines","resourceName":"azure-deployment-sample-vm"}],"outputResources":[{"id":"Microsoft.Compute/virtualMachines/azure-deployment-sample-vm"},{"id":"Microsoft.Network/networkInterfaces/azure-deployment-sample-vm-azsampleNIC"},{"id":"Microsoft.Network/networkSecurityGroups/azure-deployment-sample-vm-azsampleNSG"},{"id":"Microsoft.Network/publicIPAddresses/azure-deployment-sample-vm-azsamplePublicIP"},{"id":"Microsoft.Network/virtualNetworks/azsampleVNET"},{"id":"Microsoft.Storage/storageAccounts/i2tx3wz6fqgdkazsample"}]}}'
     http_version: 
-  recorded_at: Sat, 06 Aug 2016 00:10:35 GMT
+  recorded_at: Tue, 27 Sep 2016 20:59:31 GMT
 - request:
     method: delete
     uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/resourcegroups/falling-dust-38?api-version=2016-02-01
@@ -501,9 +550,9 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Azure-SDK-For-Ruby/0.3.1/
+      - Azure-SDK-For-Ruby/0.5.0/
       x-ms-client-request-id:
-      - c40a08c8-ffe1-47cb-808d-baafff24871f
+      - cee2b7c3-2bd1-48f6-803f-4d96f370efa8
       accept-language:
       - en-US
   response:
@@ -521,17 +570,17 @@ http_interactions:
       - https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1GQUxMSU5HOjJERFVTVDoyRDM4LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01
       retry-after: '1'
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1199'
+      - '1198'
       x-ms-request-id:
-      - 2741b386-0605-492f-b990-cdbef3a11e84
+      - f0db3649-db5c-40ce-b2b9-95b6f1bbd2f6
       x-ms-correlation-request-id:
-      - 2741b386-0605-492f-b990-cdbef3a11e84
+      - f0db3649-db5c-40ce-b2b9-95b6f1bbd2f6
       x-ms-routing-request-id:
-      - WESTUS2:20160806T001037Z:2741b386-0605-492f-b990-cdbef3a11e84
+      - WESTUS2:20160927T205931Z:f0db3649-db5c-40ce-b2b9-95b6f1bbd2f6
       strict-transport-security:
       - max-age=31536000; includeSubDomains
       date:
-      - Sat, 06 Aug 2016 00:10:36 GMT
+      - Tue, 27 Sep 2016 20:59:31 GMT
       connection:
       - close
       content-length:
@@ -540,7 +589,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Sat, 06 Aug 2016 00:10:36 GMT
+  recorded_at: Tue, 27 Sep 2016 20:59:31 GMT
 - request:
     method: get
     uri: https://management.azure.com/subscriptions/<AZURE_SUBSCRIPTION_ID>/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1GQUxMSU5HOjJERFVTVDoyRDM4LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01
@@ -549,11 +598,11 @@ http_interactions:
       string: ''
     headers:
       x-ms-client-request-id:
-      - c40a08c8-ffe1-47cb-808d-baafff24871f
+      - cee2b7c3-2bd1-48f6-803f-4d96f370efa8
       accept-language:
       - en-US
       User-Agent:
-      - Azure-SDK-For-Ruby/0.3.1/
+      - Azure-SDK-For-Ruby/0.5.0/
       Content-Type:
       - application/json
   response:
@@ -568,17 +617,17 @@ http_interactions:
       expires:
       - "-1"
       x-ms-ratelimit-remaining-subscription-reads:
-      - '14978'
+      - '14992'
       x-ms-request-id:
-      - 3440e669-c6d4-4bd1-a2f8-a1bd249e1e1a
+      - 27910529-f556-4fd5-8b42-98107802044a
       x-ms-correlation-request-id:
-      - 3440e669-c6d4-4bd1-a2f8-a1bd249e1e1a
+      - 27910529-f556-4fd5-8b42-98107802044a
       x-ms-routing-request-id:
-      - WESTUS2:20160806T001711Z:3440e669-c6d4-4bd1-a2f8-a1bd249e1e1a
+      - WESTUS2:20160927T210636Z:27910529-f556-4fd5-8b42-98107802044a
       strict-transport-security:
       - max-age=31536000; includeSubDomains
       date:
-      - Sat, 06 Aug 2016 00:17:10 GMT
+      - Tue, 27 Sep 2016 21:06:36 GMT
       connection:
       - close
       content-length:
@@ -587,5 +636,5 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Sat, 06 Aug 2016 00:17:10 GMT
-recorded_with: VCR 3.0.1
+  recorded_at: Tue, 27 Sep 2016 21:06:36 GMT
+recorded_with: VCR 3.0.3

@@ -16,7 +16,9 @@ VCR.configure do |c|
 
   c.filter_sensitive_data('<AZURE_TENANT_ID>') { ENV['AZURE_TENANT_ID'] }
   c.filter_sensitive_data('<AZURE_CLIENT_ID>') { ENV['AZURE_CLIENT_ID'] }
+  c.filter_sensitive_data('<AZURE_CLIENT_ID>') { ERB::Util.url_encode(ENV['AZURE_CLIENT_ID']) }
   c.filter_sensitive_data('<AZURE_CLIENT_SECRET>') { ENV['AZURE_CLIENT_SECRET'] }
+  c.filter_sensitive_data('<AZURE_CLIENT_SECRET>') { ERB::Util.url_encode(ENV['AZURE_CLIENT_SECRET']) }
   c.filter_sensitive_data('<AZURE_SUBSCRIPTION_ID>') { ENV['AZURE_SUBSCRIPTION_ID'] }
 
   # This will be overridden with dummy values when running in travis-ci
@@ -87,3 +89,4 @@ RSpec.configure do |config|
     end
   end
 end
+
