@@ -62,6 +62,14 @@ location.
 
 * Note: you must set each of the below environment variables (AZURE_TENANT_ID, AZURE_CLIENT_ID and AZURE_CLIENT_SECRET) prior to running the script.*
 
+### How to enable logs and retrieve operation logs? 
+
+To enable logging of the request and response contents of template deployment, we can set the `debug_setting` property of `DeploymentProperties` model as shown in this sample.
+By default, ARM does not log any content. By logging information about the request or response, you could potentially expose sensitive data that is retrieved 
+through the deployment operations. To disable them set it to `none`.
+
+If logging is enabled, we can use `list` operation of the `deployment_operations` to retrieve the results as shown in this sample.
+
 ### What is this lib/deployer.rb Doing?
 
 The [Deployer class][Deployer class] does the following:
