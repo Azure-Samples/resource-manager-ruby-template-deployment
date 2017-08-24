@@ -61,6 +61,7 @@ class Deployer
     operation_results = @client.deployment_operations.list(@resource_group, 'azure-sample')
     unless operation_results.nil?
       operation_results.each do |operation_result|
+        puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
         puts "operation_id = #{operation_result.operation_id}"
         unless operation_result.properties.nil?
           puts "provisioning_state = #{operation_result.properties.provisioning_state}"
