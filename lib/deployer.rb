@@ -47,8 +47,32 @@ class Deployer
     deploy_params = DEPLOYMENT_PARAMETERS.merge(sshKeyData: @pub_ssh_key)
     deployment.properties.parameters = Hash[*deploy_params.map{ |k, v| [k,  {value: v}] }.flatten]
 
+    # log the request and response contents of Template Deployment.
+    # By default, ARM does not log any content. By logging information about the request or response, you could
+    # potentially expose sensitive data that is retrieved through the deployment operations.
+    debug_settings = Azure::ARM::Resources::Models::DebugSetting.new
+    debug_settings.detail_level = 'requestContent, responseContent'
+    deployment.properties.debug_setting = debug_settings
+
     # put the deployment to the resource group
     @client.deployments.create_or_update(@resource_group, 'azure-sample', deployment)
+
+    # See logged information related to the deployment operations
+    operation_results = @client.deployment_operations.list(@resource_group, 'azure-sample')
+    unless operation_results.nil?
+      operation_results.each do |operation_result|
+        puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+        puts "operation_id = #{operation_result.operation_id}"
+        unless operation_result.properties.nil?
+          puts "provisioning_state = #{operation_result.properties.provisioning_state}"
+          puts "status_code = #{operation_result.properties.status_code}"
+          puts "status_message = #{operation_result.properties.status_message}"
+          puts "target_resource = #{operation_result.properties.target_resource.id}" unless operation_result.properties.target_resource.nil?
+          puts "request = #{operation_result.properties.request.content}" unless operation_result.properties.request.nil?
+          puts "response = #{operation_result.properties.response.content}" unless operation_result.properties.response.nil?
+        end
+      end
+    end
   end
 
   # delete the resource group and all resources within the group
