@@ -24,24 +24,28 @@ class Deployer
         ENV['AZURE_CLIENT_ID'],
         ENV['AZURE_CLIENT_SECRET'])
     credentials = MsRest::TokenCredentials.new(provider)
-    @client = Azure::ARM::Resources::ResourceManagementClient.new(credentials)
-    @client.subscription_id = @subscription_id
+
+    options = {
+        credentials: credentials,
+        subscription_id: @subscription_id
+    }
+    @client = Azure::Resources::Profiles::Latest::Mgmt::Client.new(options)
   end
 
   # Deploy the template to a resource group
   def deploy
     # ensure the resource group is created
-    params = Azure::ARM::Resources::Models::ResourceGroup.new.tap do |rg|
+    params = @client.model_classes.resource_group.new.tap do |rg|
       rg.location = 'westus'
     end
     @client.resource_groups.create_or_update(@resource_group, params)
 
     # build the deployment from a json file template from parameters
     template = File.read(File.expand_path(File.join(__dir__, '../templates/template.json')))
-    deployment = Azure::ARM::Resources::Models::Deployment.new
-    deployment.properties = Azure::ARM::Resources::Models::DeploymentProperties.new
+    deployment = @client.model_classes.deployment.new
+    deployment.properties = @client.model_classes.deployment_properties.new
     deployment.properties.template = JSON.parse(template)
-    deployment.properties.mode = Azure::ARM::Resources::Models::DeploymentMode::Incremental
+    deployment.properties.mode = Azure::Resources::Profiles::Latest::Mgmt::Models::DeploymentMode::Incremental
 
     # build the deployment template parameters from Hash to {key: {value: value}} format
     deploy_params = DEPLOYMENT_PARAMETERS.merge(sshKeyData: @pub_ssh_key)
@@ -50,7 +54,7 @@ class Deployer
     # log the request and response contents of Template Deployment.
     # By default, ARM does not log any content. By logging information about the request or response, you could
     # potentially expose sensitive data that is retrieved through the deployment operations.
-    debug_settings = Azure::ARM::Resources::Models::DebugSetting.new
+    debug_settings = @client.model_classes.debug_setting.new
     debug_settings.detail_level = 'requestContent, responseContent'
     deployment.properties.debug_setting = debug_settings
 
