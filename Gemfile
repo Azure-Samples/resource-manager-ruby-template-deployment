@@ -13,6 +13,6 @@ group :development, :test do
   gem 'climate_control'
 end
 
-gem 'azure_mgmt_resources', '~>0.11.0'
+gem 'azure_mgmt_resources', '~>0.15.0'
 gem 'haikunator',            '~>1.1'
 
