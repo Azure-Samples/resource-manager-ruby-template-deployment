@@ -22,7 +22,7 @@ my_deployment = deployer.deploy
 
 deployer.print_properties(my_deployment)
 
-puts "Done deploying!!\n\nPress enter to delete the sample resource group."
+puts "Done deploying!!\n\nYou can connect via: `ssh azureSample@#{deployer.dns_prefix}.local.cloudapp.azurestack.external`.\nPress enter to delete the sample resource group."
 gets
 
 # Destroy the resource group which contains the deployment

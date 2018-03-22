@@ -35,7 +35,7 @@ class Deployer
       credentials: credentials,
       subscription_id: @subscription_id,
       active_directory_settings: active_directory_settings,
-      base_url: 'https://management.local.azurestack.external'
+      base_url: 'https://management.local.azurestack.external' # Your Resource Manager Url
     }
 
     @resource_client = Azure::Resources::Profiles::V2017_03_09::Mgmt::Client.new(options)  
@@ -111,7 +111,7 @@ class Deployer
   def get_active_directory_settings()
     settings = MsRestAzure::ActiveDirectoryServiceSettings.new
     settings.authentication_endpoint = 'https://login.windows.net/'
-    settings.token_audience = '<token_audience>'
+    settings.token_audience = '<Your Token-Audience>'
     settings
   end
 end

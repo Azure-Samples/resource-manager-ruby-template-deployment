@@ -46,11 +46,30 @@ each the Tenant Id, Client Id and Client Secret from creating the Service Princi
 
 - [Create a Service Principal][ServicePrincipalCreation]
 - `git clone https://github.com/Azure-Samples/resource-manager-ruby-template-deployment.git`
-- `cd resource-manager-ruby-template-deployment`
+- `cd resource-manager-ruby-template-deployment\Hybrid`
 - `bundle install`
 - `export AZURE_TENANT_ID={your tenant id}`
 - `export AZURE_CLIENT_ID={your client id}`
 - `export AZURE_CLIENT_SECRET={your client secret}`
+- To authenticate the Service Principal against Azure Stack environment, the endpoints should be defined using ```get_active_directory_settings()```. Retrieve 'authenication_endpoint' and 'token_audience' from ARM metadata endpoint.
+
+    Metadata endpoint format:
+    ```
+    <ResourceManagerUrl>/metadata/endpoints?api-version=1.0
+    ```
+    Example:
+    ```
+    https://management.<location>.azurestack.external/metadata/endpoints?api-version=1.0
+    ```
+
+    ```ruby
+    def get_active_directory_settings()
+        settings = MsRestAzure::ActiveDirectoryServiceSettings.new
+        settings.authentication_endpoint = '<authentication endpoint>'
+        settings.token_audience = '<token-audience>'
+    settings
+    end
+    ```
 - `bundle exec ruby azure_deployment.rb`
 
 ### What is this azure_deployment.rb Doing?
@@ -91,10 +110,10 @@ Beginning the deployment...
 
 Done deploying!!
 
-You can connect via: `ssh azureSample@damp-dew-79.westus.cloudapp.azure.com`
+You can connect via: `ssh azureSample@damp-dew-79.local.cloudapp.azurestack.external`
 ```
 
-You should be able to run `ssh azureSample@{your dns value}.westus.cloudapp.azure.com` to connect to your new VM.
+You should be able to run `ssh azureSample@{your dns value}.local.cloudapp.azurestack.external` to connect to your new VM.
 
 ### How to enable logs and retrieve operation logs? 
 
