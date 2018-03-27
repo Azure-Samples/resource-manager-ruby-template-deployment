@@ -20,13 +20,14 @@ class Deployer
     raise ArgumentError.new("The path: #{pub_ssh_key_path} does not exist.") unless File.exist?(pub_ssh_key_path)
     @pub_ssh_key = File.read(pub_ssh_key_path)
 
-    active_directory_settings = get_active_directory_settings()
+    # This parameter is only required for AzureStack or other soverign clouds. Pulic Azure already has these settings by default.
+    active_directory_settings = get_active_directory_settings(ENV['ARM_ENDPOINT'])
 
     provider = MsRestAzure::ApplicationTokenProvider.new(
         ENV['AZURE_TENANT_ID'],
         ENV['AZURE_CLIENT_ID'],
         ENV['AZURE_CLIENT_SECRET'],
-        active_directory_settings
+        active_directory_settings 
         )
 
     credentials = MsRest::TokenCredentials.new(provider)
@@ -35,7 +36,7 @@ class Deployer
       credentials: credentials,
       subscription_id: @subscription_id,
       active_directory_settings: active_directory_settings,
-      base_url: 'https://management.local.azurestack.external' # Your Resource Manager Url
+      base_url: ENV['ARM_ENDPOINT']
     }
 
     @resource_client = Azure::Resources::Profiles::V2017_03_09::Mgmt::Client.new(options)  
@@ -108,10 +109,20 @@ class Deployer
     puts "\n\n"
   end
 
-  def get_active_directory_settings()
+  # Get Authentication endpoints using Arm Metadata Endpoints
+  def get_active_directory_settings(armEndpoint)
     settings = MsRestAzure::ActiveDirectoryServiceSettings.new
-    settings.authentication_endpoint = 'https://login.windows.net/'
-    settings.token_audience = '<Your Token-Audience>'
+    response = Net::HTTP.get_response(URI("#{armEndpoint}/metadata/endpoints?api-version=1.0"))
+    status_code = response.code
+    response_content = response.body
+    unless status_code == "200"
+      error_model = JSON.load(response_content)
+      fail MsRestAzure::AzureOperationError.new("Getting Azure Stack Metadata Endpoints", response, error_model)
+    end
+
+    result = JSON.load(response_content)
+    settings.authentication_endpoint = result['authentication']['loginEndpoint'] unless result['authentication']['loginEndpoint'].nil?
+    settings.token_audience = result['authentication']['audiences'][0] unless result['authentication']['audiences'][0].nil?
     settings
   end
 end

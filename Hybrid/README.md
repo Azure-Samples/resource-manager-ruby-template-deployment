@@ -1,7 +1,7 @@
 ---
 services: azure-resource-manager
 platforms: ruby
-author: devigned
+author: viananth
 ---
 
 [![Build Status](https://travis-ci.org/Azure-Samples/resource-manager-ruby-template-deployment.svg?branch=master)](https://travis-ci.org/Azure-Samples/resource-manager-ruby-template-deployment)
@@ -51,23 +51,26 @@ each the Tenant Id, Client Id and Client Secret from creating the Service Princi
 - `export AZURE_TENANT_ID={your tenant id}`
 - `export AZURE_CLIENT_ID={your client id}`
 - `export AZURE_CLIENT_SECRET={your client secret}`
-- To authenticate the Service Principal against Azure Stack environment, the endpoints should be defined using ```get_active_directory_settings()```. Retrieve 'authenication_endpoint' and 'token_audience' from ARM metadata endpoint.
+- `export ARM_ENDPOINT={your AzureStack Resource manager url}`
+- To authenticate the Service Principal against Azure Stack environment, the endpoints should be defined using ```get_active_directory_settings()```. This method uses the ARM_Endpoint environment variable that was set using the previous step.
 
-    Metadata endpoint format:
-    ```
-    <ResourceManagerUrl>/metadata/endpoints?api-version=1.0
-    ```
-    Example:
-    ```
-    https://management.<location>.azurestack.external/metadata/endpoints?api-version=1.0
-    ```
 
     ```ruby
-    def get_active_directory_settings()
+    # Get Authentication endpoints using Arm Metadata Endpoints
+    def get_active_directory_settings(armEndpoint)
         settings = MsRestAzure::ActiveDirectoryServiceSettings.new
-        settings.authentication_endpoint = '<authentication endpoint>'
-        settings.token_audience = '<token-audience>'
-    settings
+        response = Net::HTTP.get_response(URI("#{armEndpoint}/metadata/endpoints?api-version=1.0"))
+        status_code = response.code
+        response_content = response.body
+        unless status_code == "200"
+            error_model = JSON.load(response_content)
+            fail MsRestAzure::AzureOperationError.new("Getting Azure Stack Metadata Endpoints", response, error_model)
+        end
+
+        result = JSON.load(response_content)
+        settings.authentication_endpoint = result['authentication']['loginEndpoint'] unless result['authentication']['loginEndpoint'].nil?
+        settings.token_audience = result['authentication']['audiences'][0] unless result['authentication']['audiences'][0].nil?
+        settings
     end
     ```
 - `bundle exec ruby azure_deployment.rb`
@@ -123,9 +126,9 @@ through the deployment operations. To disable them set it to `none`.
 
 If logging is enabled, we can use `list` operation of the `deployment_operations` to retrieve the results as shown in this sample.
 
-[Template]: https://github.com/azure-samples/resource-manager-ruby-template-deployment/blob/master/templates/template.json
+[Template]: https://github.com/azure-samples/resource-manager-ruby-template-deployment/blob/master/Hybrid/templates/template.json
 [ServicePrincipalCreation]: https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals
-[azure_deployment.rb]: https://github.com/azure-samples/resource-manager-ruby-template-deployment/blob/master/azure_deployment.rb
-[Deployer class]: https://github.com/azure-samples/resource-manager-ruby-template-deployment/blob/master/lib/deployer.rb
+[azure_deployment.rb]: https://github.com/azure-samples/resource-manager-ruby-template-deployment/blob/master/Hybrid/azure_deployment.rb
+[Deployer class]: https://github.com/azure-samples/resource-manager-ruby-template-deployment/blob/master/Hybrid/lib/deployer.rb
 [azure_mgmt_resources]: https://rubygems.org/gems/azure_mgmt_resources
 [rdocs_mgmt_resources]: http://www.rubydoc.info/gems/azure_mgmt_resources/0.2.1
